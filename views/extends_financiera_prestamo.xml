@@ -1,0 +1,64 @@
+<openerp>
+	<data>
+
+		<!-- Prestamo inherit -->
+
+		<record id="prestamo_form_inherited"  model="ir.ui.view">
+			<field name="name">Extension Prestamo Form</field>
+			<field name="model">financiera.prestamo</field>
+			<field name="inherit_id" ref="financiera_prestamos.financiera_prestamo_form"/>
+			<field name="arch" type="xml">        
+				<xpath expr="//field[@name='pago_voluntario_entidad']" position='after'>
+					<div>
+						<label string="Mercado pago - Suscripción" style="font-weight: bold;"/>
+						<field name="mercado_pago_suscripcion"/>
+					</div>
+				</xpath>
+				<xpath expr="//page[@name='otra_informacion']" position='before'>
+					<page name="name" string="Mercado Pago">
+						<group string="Suscripcion tarjeta de debito">
+							<group>
+								<label for="button_mercado_pago_crear_suscripcion" string=" "/>
+								<button name="button_mercado_pago_crear_suscripcion" string="Crear suscripcion"
+								type="object" confirm="Desea confirmar?"/>
+								<field name="mercado_pago_suscripcion_id" readonly="1"/>
+								<field name="mercado_pago_external_reference" readonly="1"/>
+								<field name="mercado_pago_init_point" readonly="1" widget="url"/>
+								<field name="mercado_pago_transaction_amount" readonly="1"/>
+								<field name="mercado_pago_frequency" readonly="1"/>
+								<field name="mercado_pago_frequency_type" readonly="1"/>
+								<field name="mercado_pago_start_date" readonly="1"/>
+								<field name="mercado_pago_end_date" readonly="1"/>
+								<field name="mercado_pago_currency_id" readonly="1"/>
+								<field name="mercado_pago_status" readonly="1"/>
+								<separate string="Resumen" colspan="2"/>
+								<field name="mercado_pago_last_charged_date" readonly="1"/>
+								<field name="mercado_pago_charged_quantity" readonly="1"/>
+								<field name="mercado_pago_charged_amount" readonly="1"/>
+								<field name="mercado_pago_quotas" readonly="1"/>
+								<field name="mercado_pago_last_charged_amount" readonly="1"/>
+								<field name="mercado_pago_pending_charge_amount" readonly="1"/>
+								<field name="mercado_pago_semaphore" readonly="1"/>
+								<field name="mercado_pago_pending_charge_quantity" readonly="1"/>
+							</group>
+							<group>
+								<field name="mercado_pago_version" readonly="1"/>
+								<field name="mercado_pago_application_id" readonly="1"/>
+								<field name="mercado_pago_collector_id" readonly="1"/>
+								<field name="mercado_pago_preapproval_plan_id" readonly="1"/>
+								<field name="mercado_pago_reason" readonly="1"/>
+								<field name="mercado_pago_payer_id" readonly="1"/>
+								<field name="mercado_pago_card_id" readonly="1"/>
+								<field name="mercado_pago_payment_method_id" readonly="1"/>
+								<field name="mercado_pago_next_payment_date" readonly="1"/>
+								<field name="mercado_pago_date_created" readonly="1"/>
+								<field name="mercado_pago_last_modified" readonly="1"/>
+								<field name="mercado_pago_back_url" readonly="1"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

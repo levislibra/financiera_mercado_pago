@@ -1,0 +1,63 @@
+<openerp>
+  <data>
+
+		<record model="ir.ui.view" id="mercado_pago_config_tree">
+      <field name="name">financiera.mercado.pago.config.tree</field>
+      <field name="model">financiera.mercado.pago.config</field>
+      <field name="arch" type="xml">
+        <tree create="false" delete="false">
+          <field name="name"/>
+          <field name="company_id" groups="base.group_erp_manager"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mercado_pago_config_form">
+      <field name="name">financiera.mercado.pago.config.form</field>
+      <field name="model">financiera.mercado.pago.config</field>
+      <field name="arch" type="xml">
+        <form create="false" delete="false">
+					<header>
+					</header>
+          <sheet>
+            <group>
+              <group>
+                <field name="company_id" groups="base.group_erp_manager"/>
+								<field name="name"/>
+								<field name="api_key"/>
+								<field name="access_token"/>
+							</group>
+							<group>
+								<field name="set_default_payment"/>
+								<field name="return_url"/>
+								<field name="validate_id"/>
+								<field name="accept_no_funds"/>
+								<field name="days_execute_on_expiration"/>
+								<field name="journal_id"/>
+								<field name="factura_electronica"/>
+							</group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mercado_pago_action">
+      <field name="name">Configuracion</field>
+      <field name="res_model">financiera.mercado.pago.config</field>
+      <field name="view_mode">tree,form</field>
+      <!-- <field name="context">{'search_default_pendientes':0}</field> -->
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('mercado_pago_config_tree')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('mercado_pago_config_form')})]"/>
+    </record>
+
+		<!-- Top menu item -->
+				
+		<menuitem name="Mercado Pago" id="menu_mercado_pago" groups="financiera_mercado_pago.user"
+			web_icon="financiera_mercado_pago,static/description/icon.png" sequence="30"/>
+		<menuitem name="Configuracion" id="menu_mercado_pago_action" parent="menu_mercado_pago" 
+			action="mercado_pago_action" sequence="100" groups="financiera_mercado_pago.manager"/>
+
+	</data>
+</openerp>
