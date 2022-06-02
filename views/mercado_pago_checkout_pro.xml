@@ -1,0 +1,58 @@
+<openerp>
+  <data>
+
+		<record model="ir.ui.view" id="mercado_pago_config_checkout_pro_tree">
+      <field name="name">financiera.mercado.pago.config.tree</field>
+      <field name="model">financiera.mercado.pago.checkout.pro</field>
+      <field name="arch" type="xml">
+        <tree create="false" delete="false">
+					<field name="partner_id"/>
+          <field name="total_amount"/>
+					<field name="expiration_date_to"/>
+					<field name="init_point" widget="url"/>
+          <field name="company_id" groups="base.group_erp_manager"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mercado_pago_config_checkout_pro_form">
+      <field name="name">financiera.mercado.pago.checkout.pro.form</field>
+      <field name="model">financiera.mercado.pago.checkout.pro</field>
+      <field name="arch" type="xml">
+        <form create="false" delete="false">
+					<header>
+					</header>
+          <sheet>
+            <group>
+              <group>
+                <field name="company_id" groups="base.group_erp_manager"/>
+								<field name="total_amount"/>
+								<field name="expiration_date_to"/>
+								<field name="init_point" widget="url"/>
+							</group>
+							<group>
+							</group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mercado_pago_config_checkout_pro_action">
+      <field name="name">Configuracion</field>
+      <field name="res_model">financiera.mercado.pago.checkout.pro</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('mercado_pago_config_checkout_pro_tree')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('mercado_pago_config_checkout_pro_form')})]"/>
+    </record>
+
+		<!-- Top menu item -->
+				
+		<menuitem name="Checkout Pro" id="menu_mercado_pago_checkout_pro" parent="menu_mercado_pago"
+			groups="financiera_mercado_pago.user" sequence="20"/>
+		<menuitem name="Checkout Pro" id="menu_mercado_pago_checkout_pro_action" parent="menu_mercado_pago_checkout_pro" 
+			action="mercado_pago_config_checkout_pro_action" sequence="50"/>
+
+	</data>
+</openerp>

@@ -30,9 +30,6 @@
 							<group>
 								<field name="set_default_payment"/>
 								<field name="return_url"/>
-								<field name="validate_id"/>
-								<field name="accept_no_funds"/>
-								<field name="days_execute_on_expiration"/>
 								<field name="journal_id"/>
 								<field name="factura_electronica"/>
 							</group>

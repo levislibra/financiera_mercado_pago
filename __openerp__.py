@@ -27,8 +27,10 @@
         'security/ir.model.access.csv',
         'security/security.xml',
         'views/mercado_pago_config.xml',
+				'views/mercado_pago_checkout_pro.xml',
 				'views/extends_res_company.xml',
 				'views/extends_financiera_prestamo.xml',
+				'views/extends_financiera_prestamo_cuota.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
